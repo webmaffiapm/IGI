@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGI</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        #error {
+            color: #fff;
+            font-family: system-ui, sans-serif;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="img" src="" alt="">
+    <p id="error">Image not found.</p>
+
+    <script>
+        // Get the slug from the URL e.g. /HomeV1 → HomeV1
+        const slug = window.location.pathname.replace('/', '').trim();
+
+        if (slug) {
+            // Try .png first, then .jpg, then .jpeg, then .webp
+            const extensions = ['png', 'jpg', 'jpeg', 'webp'];
+            let loaded = false;
+
+            function tryNext(i) {
+                if (i >= extensions.length) {
+                    document.getElementById('img').style.display = 'none';
+                    document.getElementById('error').style.display = 'block';
+                    return;
+                }
+                const img = document.getElementById('img');
+                img.onload = () => { document.title = slug; };
+                img.onerror = () => tryNext(i + 1);
+                img.src = `/${slug}.${extensions[i]}`;
+                img.alt = slug;
+            }
+
+            tryNext(0);
+        }
+    </script>
+</body>
+</html>
