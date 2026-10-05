@@ -51,5 +51,20 @@
     <video class="video-main" src="v3/2.mp4" autoplay muted loop playsinline></video>
     <img class="overlay" src="v3/overlay.png" alt="">
   </section>
+
+  <section class="second-fold">
+    <img src="v3/second-fold-1.jpg" alt="Second Fold" style="width: 100%; display: block; height: auto;">
+  </section>
+  <script>
+    document.querySelectorAll('video').forEach(video => {
+      // Attempt to play the video explicitly
+      let playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Autoplay was prevented or video failed to load:", error);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
