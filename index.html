@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #1a1a1a;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        #error {
+            color: #fff;
+            font-family: system-ui, sans-serif;
+            padding: 40px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="img" src="" alt="" style="display: none;">
+    <video id="vid" src="" autoplay loop muted playsinline style="display: none; width: 100%; height: auto;"></video>
+    <p id="error">Media not found.</p>
+
+    <script>
+        const slug = window.location.pathname.replace('/', '').trim();
+
+        if (slug) {
+            const extensions = ['png', 'jpg', 'jpeg', 'webp', 'mp4'];
+            const img = document.getElementById('img');
+            const vid = document.getElementById('vid');
+
+            function tryNext(i) {
+                if (i >= extensions.length) {
+                    img.style.display = 'none';
+                    vid.style.display = 'none';
+                    document.getElementById('error').style.display = 'block';
+                    return;
+                }
+                
+                const ext = extensions[i];
+                if (ext === 'mp4') {
+                    vid.onloadeddata = () => { 
+                        document.title = slug; 
+                        vid.style.display = 'block';
+                    };
+                    vid.onerror = () => tryNext(i + 1);
+                    vid.src = `/${slug}.${ext}`;
+                } else {
+                    img.onload = () => { 
+                        document.title = slug; 
+                        img.style.display = 'block';
+                    };
+                    img.onerror = () => tryNext(i + 1);
+                    img.src = `/${slug}.${ext}`;
+                    img.alt = slug;
+                }
+            }
+
+            tryNext(0);
+        }
+    </script>
+</body>
+</html>
