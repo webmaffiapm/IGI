@@ -20,9 +20,9 @@
     height: auto;
   }
 
-  /* Nav bar — fixed at top so it stays while scrolling */
+  /* Nav bar — absolute at top so it scrolls with the page */
   .nav-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -50,7 +50,7 @@
   <div class="hero-section">
     <video src="v2/1.mp4" autoplay muted loop playsinline></video>
 
-    <!-- Nav bar overlay (fixed, sits on top of video) -->
+    <!-- Nav bar overlay (absolute, sits on top of video) -->
     <div class="nav-overlay">
       <img src="nav-bar.png" alt="Navigation Bar">
     </div>
@@ -61,5 +61,3 @@
 
 </body>
 </html>
-
-
