@@ -6,12 +6,60 @@
 <title>IGI - home-v4.1</title>
 <style>
   html, body { margin: 0; padding: 0; background: #ffffff; }
-  video, img { display: block; width: 100%; height: auto; }
+
+  /* Hero section wraps the video with the nav overlay */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+  }
+
+  .hero-section video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Nav bar — fixed at top so it stays while scrolling */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    pointer-events: none; /* keeps nav non-interactive as a pure overlay */
+  }
+
+  .nav-overlay img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Second fold image below */
+  .second-fold {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 </style>
 </head>
 <body>
-<video src="v2/1.mp4" autoplay muted loop playsinline></video>
-<img src="v2/second-fold.png" alt="Second fold">
+
+  <!-- Hero section: video + nav overlay -->
+  <div class="hero-section">
+    <video src="v2/1.mp4" autoplay muted loop playsinline></video>
+
+    <!-- Nav bar overlay (fixed, sits on top of video) -->
+    <div class="nav-overlay">
+      <img src="nav-bar.png" alt="Navigation Bar">
+    </div>
+  </div>
+
+  <!-- Second fold -->
+  <img class="second-fold" src="v2/second-fold.png" alt="Second fold">
+
 </body>
 </html>
+
 
