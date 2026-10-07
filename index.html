@@ -54,23 +54,17 @@
                         document.title = slug; 
                         vid.style.display = 'block';
                     };
-                    vid.onerror = () => {
-                        vid.onerror = null;
-                        tryNext(i + 1);
-                    };
+                    vid.onerror = () => tryNext(i + 1);
                     vid.src = `/${slug}.${ext}`;
                 } else {
                     const tempImg = new Image();
-                    tempImg.onload = () => { 
-                        document.title = slug; 
+                    tempImg.onload = () => {
+                        document.title = slug;
                         img.src = tempImg.src;
                         img.alt = slug;
                         img.style.display = 'block';
                     };
-                    tempImg.onerror = () => {
-                        tempImg.onerror = null;
-                        tryNext(i + 1);
-                    };
+                    tempImg.onerror = () => tryNext(i + 1);
                     tempImg.src = `/${slug}.${ext}`;
                 }
             }
