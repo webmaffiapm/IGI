@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <img id="img" src="" alt="" style="display: none;">
-    <video id="vid" src="" autoplay loop muted playsinline style="display: none; width: 100%; height: auto;"></video>
+    <img id="img" alt="" style="display: none;">
+    <video id="vid" autoplay loop muted playsinline style="display: none; width: 100%; height: auto;"></video>
     <p id="error">Media not found.</p>
 
     <script>
@@ -54,16 +54,24 @@
                         document.title = slug; 
                         vid.style.display = 'block';
                     };
-                    vid.onerror = () => tryNext(i + 1);
+                    vid.onerror = () => {
+                        vid.onerror = null;
+                        tryNext(i + 1);
+                    };
                     vid.src = `/${slug}.${ext}`;
                 } else {
-                    img.onload = () => { 
+                    const tempImg = new Image();
+                    tempImg.onload = () => { 
                         document.title = slug; 
+                        img.src = tempImg.src;
+                        img.alt = slug;
                         img.style.display = 'block';
                     };
-                    img.onerror = () => tryNext(i + 1);
-                    img.src = `/${slug}.${ext}`;
-                    img.alt = slug;
+                    tempImg.onerror = () => {
+                        tempImg.onerror = null;
+                        tryNext(i + 1);
+                    };
+                    tempImg.src = `/${slug}.${ext}`;
                 }
             }
 
