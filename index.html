@@ -18,6 +18,12 @@
             height: auto;
             display: block;
         }
+        #frame {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
         #error {
             color: #fff;
             font-family: system-ui, sans-serif;
@@ -30,6 +36,7 @@
 <body>
     <img id="img" alt="" style="display: none;">
     <video id="vid" autoplay loop muted playsinline style="display: none; width: 100%; height: auto;"></video>
+    <iframe id="frame"></iframe>
     <p id="error">Media not found.</p>
 
     <script>
@@ -39,30 +46,33 @@
             const extensions = ['png', 'jpg', 'jpeg', 'webp', 'mp4', 'html'];
             const img = document.getElementById('img');
             const vid = document.getElementById('vid');
+            const frame = document.getElementById('frame');
 
             function tryNext(i) {
                 if (i >= extensions.length) {
                     img.style.display = 'none';
                     vid.style.display = 'none';
+                    frame.style.display = 'none';
                     document.getElementById('error').style.display = 'block';
                     return;
                 }
-                
+
                 const ext = extensions[i];
                 if (ext === 'html') {
-                    // Check if the .html file exists, then redirect to it
                     fetch(`/${slug}.html`, { method: 'HEAD' })
                         .then(res => {
                             if (res.ok) {
-                                window.location.replace(`/${slug}.html`);
+                                document.title = slug;
+                                frame.src = `/${slug}.html`;
+                                frame.style.display = 'block';
                             } else {
                                 tryNext(i + 1);
                             }
                         })
                         .catch(() => tryNext(i + 1));
                 } else if (ext === 'mp4') {
-                    vid.onloadeddata = () => { 
-                        document.title = slug; 
+                    vid.onloadeddata = () => {
+                        document.title = slug;
                         vid.style.display = 'block';
                     };
                     vid.onerror = () => tryNext(i + 1);
