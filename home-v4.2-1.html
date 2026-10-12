@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IGI - home-v4.2</title>
+  <title>IGI - home-v4.2-1</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     .hero {
       position: relative;
@@ -24,14 +29,12 @@
       position: absolute;
       top: 0;
       left: 0;
-        filter: blur(10px) brightness(0.6);
+      filter: blur(10px) brightness(0.6);
       transform: scale(1.1);
     }
 
     .hero .video-main {
       position: relative;
-      /* sharp window: matches the box in overlay.png (1920x1080) */
-      clip-path: inset(17.96% 4.375% 16.2% 4.84%);
     }
 
     .hero .overlay {
@@ -45,15 +48,16 @@
     }
   </style>
 </head>
+
 <body>
   <section class="hero">
-    <video class="video-bg" src="v3/2.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-    <video class="video-main" src="v3/2.mp4" autoplay muted loop playsinline></video>
-    <img class="overlay" src="overlay-1.png" alt="">
+    <video class="video-bg" src="4.2/video.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+    <video class="video-main" src="4.2/video.mp4" autoplay muted loop playsinline></video>
+    <img class="overlay" src="4.2/overlay.png" alt="">
   </section>
 
   <section class="second-fold">
-    <img src="v3/second-fold-1.png" alt="Second Fold" style="width: 100%; display: block; height: auto;">
+    <img src="4.2/secondfold-1.png" alt="Second Fold" style="width: 100%; display: block; height: auto;">
   </section>
   <script>
     document.querySelectorAll('video').forEach(video => {
@@ -67,4 +71,5 @@
     });
   </script>
 </body>
+
 </html>
