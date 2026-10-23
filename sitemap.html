@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGI Website Sitemap</title>
+
+    <style>
+        :root {
+            --igi-green-dark: #1b7a37;
+            --igi-green-mid: #229944;
+            --igi-green-light: #2eb853;
+            --igi-slate-dark: #323b44;
+            --igi-slate-subtle: #718096;
+            --line-color: #cbd5e0;
+            --bg-page: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 24px 60px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-page);
+            color: var(--igi-slate-dark);
+        }
+
+        /* Top header with logo on top left */
+        .page-header {
+            max-width: 1400px;
+            margin: 0 auto 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .header-logo-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .header-logo-link:hover {
+            opacity: 0.85;
+        }
+
+        .header-logo-link img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-titles {
+            text-align: center;
+            flex: 1;
+            padding-right: 180px;
+            /* balances out logo on left */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 6px;
+            color: var(--igi-slate-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--igi-slate-subtle);
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .sitemap {
+            max-width: 1400px;
+            margin: auto;
+            overflow-x: auto;
+            padding: 10px 10px 35px;
+        }
+
+        .tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 1100px;
+        }
+
+        .node {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(35, 50, 65, 0.06);
+        }
+
+        a.node:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(34, 153, 68, 0.18);
+            border-color: var(--igi-green-mid);
+        }
+
+        /* Root: Home Page (Deep Slate/Charcoal from IGI typography) */
+        .root {
+            width: 220px;
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: #ffffff;
+            border: 2px solid #1a202c;
+            font-size: 17px;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+        }
+
+        a.root:hover {
+            box-shadow: 0 8px 22px rgba(26, 32, 44, 0.3);
+            border-color: var(--igi-green-mid);
+        }
+
+        /* Primary Headings: IGI Green Gradient matching the logo */
+        .primary {
+            background: linear-gradient(135deg, var(--igi-green-light) 0%, var(--igi-green-dark) 100%);
+            color: #ffffff;
+            border: 1px solid #1b7a37;
+            cursor: default;
+            user-select: none;
+            letter-spacing: 0.2px;
+        }
+
+        /* Secondary Page Links */
+        .secondary {
+            background: #ffffff;
+            color: var(--igi-slate-dark);
+            border: 1px solid #d2dbe3;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .secondary:hover {
+            color: var(--igi-green-dark);
+        }
+
+        .home-branch {
+            width: 220px;
+            margin-top: 0;
+        }
+
+        .home-branch .node {
+            width: 100%;
+        }
+
+        .connector {
+            width: 2px;
+            height: 28px;
+            background: var(--line-color);
+        }
+
+        .branch-line {
+            width: 84%;
+            height: 2px;
+            background: var(--line-color);
+        }
+
+        .branches {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, minmax(155px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .branch {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .branch::before {
+            content: "";
+            width: 2px;
+            height: 28px;
+            background: var(--line-color);
+        }
+
+        .branch>.primary {
+            width: 100%;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .children {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            padding-top: 16px;
+        }
+
+        .children .node {
+            width: 100%;
+            position: relative;
+        }
+
+        .children .node::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -17px;
+            height: 16px;
+            width: 2px;
+            background: var(--line-color);
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #6a7f91;
+            margin: 0 0 12px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 12px;
+            color: #7a8b99;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .header-titles {
+                text-align: left;
+                padding-right: 0;
+            }
+
+            h1,
+            .subtitle {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 20px 12px 40px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .sitemap {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="page-header">
+        <a class="header-logo-link" href="https://igi-design.vercel.app/home-v4.2-2" target="_blank"
+            rel="noopener noreferrer" title="Ichnos Glenmark Innovation">
+            <img src="igi-logo.png" alt="Ichnos Glenmark Innovation">
+        </a>
+        <div class="header-titles">
+            <h1>IGI Website Sitemap</h1>
+        </div>
+    </header>
+
+    <div class="sitemap">
+        <div class="tree">
+
+            <!-- Root page -->
+            <a class="node root" href="https://igi-design.vercel.app/home-v4.2-2" target="_blank"
+                rel="noopener noreferrer">
+                Home Page
+            </a>
+
+            <div class="connector"></div>
+            <div class="branch-line"></div>
+
+            <!-- Primary navigation branches -->
+            <div class="branches">
+
+                <!-- Science -->
+                <section class="branch">
+                    <div class="node primary">
+                        Science
+                    </div>
+                    <div class="children">
+                        <a class="node secondary" href="https://igi-design.vercel.app/ourapproach-1" target="_blank"
+                            rel="noopener noreferrer">
+                            Our Approach
+                        </a>
+                        <a class="node secondary" href="https://igi-design.vercel.app/beat-multispecific-platform"
+                            target="_blank" rel="noopener noreferrer">
+                            BEAT® Multispecific Platform
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Pipeline -->
+                <section class="branch">
+                    <div class="node primary">
+                        Pipeline
+                    </div>
+                    <div class="children">
+                        <a class="node secondary" href="https://igi-design.vercel.app/pipeline-overview" target="_blank"
+                            rel="noopener noreferrer">
+                            Pipeline Overview
+                        </a>
+                        <a class="node secondary" href="#">
+                            ISB 2001
+                        </a>
+                        <a class="node secondary" href="#">
+                            ISB 2301
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Company -->
+                <section class="branch">
+                    <div class="node primary">
+                        Company
+                    </div>
+                    <div class="children">
+                        <a class="node secondary" href="#">
+                            Company
+                        </a>
+                        <a class="node secondary" href="#">
+                            Join Us
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Careers -->
+                <section class="branch">
+                    <div class="node primary">
+                        Careers
+                    </div>
+                    <div class="children">
+                        <a class="node secondary" href="#">
+                            Careers
+                        </a>
+                    </div>
+                </section>
+
+                <!-- News -->
+                <section class="branch">
+                    <div class="node primary">
+                        News
+                    </div>
+                    <div class="children">
+                        <a class="node secondary" href="#">
+                            News &amp; Resources
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Contact us -->
+                <section class="branch">
+                    <div class="node primary">
+                        Contact Us
+                    </div>
+                    <div class="children">
+                        <a class="node secondary" href="#">
+                            Contact Us
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
