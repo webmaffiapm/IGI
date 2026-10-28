@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IGI Website Sitemap</title>
+    <title>IGI Sitemap</title>
 
     <style>
         :root {
@@ -157,6 +157,49 @@
 
         a.secondary:hover {
             color: var(--igi-green-dark);
+        }
+
+        a.node {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        /* Tick indicator for shared/linked nodes */
+        .node-tick {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 17px;
+            height: 17px;
+            color: var(--igi-green-dark);
+            background: rgba(34, 153, 68, 0.14);
+            border-radius: 50%;
+            padding: 2.5px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        a.node:hover .node-tick {
+            transform: scale(1.1);
+            background: rgba(34, 153, 68, 0.22);
+        }
+
+        .root .node-tick {
+            color: #ffffff;
+            background: rgba(46, 184, 83, 0.35);
+        }
+
+        .root:hover .node-tick {
+            background: rgba(46, 184, 83, 0.55);
+        }
+
+        .node-tick svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            stroke: currentColor;
         }
 
         .home-branch {
@@ -415,7 +458,13 @@
             <!-- Root page -->
             <a class="node root" href="https://igi-design.vercel.app/home-v4.2-2" target="_blank"
                 rel="noopener noreferrer">
-                Home Page
+                <span>Home Page</span>
+                <span class="node-tick" title="Shared with client">
+                    <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
             </a>
 
             <div class="connector"></div>
@@ -432,11 +481,23 @@
                     <div class="children">
                         <a class="node secondary" href="https://igi-design.vercel.app/ourapproach-1" target="_blank"
                             rel="noopener noreferrer">
-                            Our Approach
+                            <span>Our Approach</span>
+                            <span class="node-tick" title="Shared with client">
+                                <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </a>
                         <a class="node secondary" href="https://igi-design.vercel.app/beat-multispecific-platform"
                             target="_blank" rel="noopener noreferrer">
-                            BEAT® Multispecific Platform
+                            <span>BEAT® Multispecific Platform</span>
+                            <span class="node-tick" title="Shared with client">
+                                <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </a>
                     </div>
                 </section>
@@ -449,15 +510,33 @@
                     <div class="children">
                         <a class="node secondary" href="https://igi-design.vercel.app/pipeline-overview" target="_blank"
                             rel="noopener noreferrer">
-                            Pipeline Overview
+                            <span>Pipeline Overview</span>
+                            <span class="node-tick" title="Shared with client">
+                                <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </a>
                         <a class="node secondary" href="https://igi-design.vercel.app/isb-2001" target="_blank"
                             rel="noopener noreferrer">
-                            ISB 2001
+                            <span>ISB 2001</span>
+                            <span class="node-tick" title="Shared with client">
+                                <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </a>
                         <a class="node secondary" href="https://igi-design.vercel.app/isb-2301" target="_blank"
                             rel="noopener noreferrer">
-                            ISB 2301
+                            <span>ISB 2301</span>
+                            <span class="node-tick" title="Shared with client">
+                                <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </a>
                     </div>
                 </section>
