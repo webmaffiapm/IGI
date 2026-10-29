@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Overview</title>
+    <link rel="preload" as="image" href="latest/pipeline-overview.webp" fetchpriority="high">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            line-height: 0;
+        }
+
+        .page-image,
+        .footer-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: bottom;
+        }
+
+        .footer-image {
+            display: none;
+        }
+
+        .footer-image.loaded {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="page-image" 
+         src="latest/pipeline-overview.webp" 
+         alt="Pipeline Overview" 
+         fetchpriority="high"
+         onload="document.getElementById('footer').classList.add('loaded')">
+    <img id="footer" 
+         class="footer-image" 
+         src="latest/footer.webp" 
+         alt="Footer" 
+         loading="lazy">
+    <script>
+        const mainImg = document.querySelector('.page-image');
+        const footerImg = document.getElementById('footer');
+        if (mainImg && mainImg.complete) {
+            footerImg.classList.add('loaded');
+        }
+    </script>
+</body>
+
+</html>
