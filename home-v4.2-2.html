@@ -47,19 +47,21 @@
       pointer-events: none;
     }
   </style>
+  <link rel="preload" as="image" href="4.2/overlay.webp" fetchpriority="high">
 </head>
 
 <body>
   <section class="hero">
     <video class="video-bg" src="4.2/video.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
     <video class="video-main" src="4.2/video.mp4" autoplay muted loop playsinline></video>
-    <img class="overlay" src="4.2/overlay.webp" alt="">
+    <img class="overlay" src="4.2/overlay.webp" alt="" fetchpriority="high" loading="eager" decoding="sync">
   </section>
 
   <section class="second-fold">
     <img src="4.2/secondfold-2.webp" alt="Second Fold" style="width: 100%; display: block; height: auto;">
   </section>
-  <img id="footer" src="latest/footer.webp" alt="Footer" loading="lazy" style="width: 100%; display: block; height: auto;">
+  <img id="footer" src="latest/footer.webp" alt="Footer" loading="lazy"
+    style="width: 100%; display: block; height: auto;">
   <script>
     document.querySelectorAll('video').forEach(video => {
       // Attempt to play the video explicitly
