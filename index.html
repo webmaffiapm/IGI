@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +11,24 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             background-color: #1a1a1a;
         }
+
         img {
             width: 100%;
             height: auto;
             display: block;
         }
+
         #frame {
             display: none;
             width: 100%;
             height: 100vh;
             border: none;
         }
+
         #error {
             color: #fff;
             font-family: system-ui, sans-serif;
@@ -33,9 +38,11 @@
         }
     </style>
 </head>
+
 <body>
     <img id="img" alt="" style="display: none;">
-    <img id="footer" src="latest/footer.webp" alt="Footer" loading="lazy" style="display: none; width: 100%; height: auto;">
+    <img id="footer" src="latest/footer.webp" alt="Footer" loading="lazy"
+        style="display: none; width: 100%; height: auto;">
     <video id="vid" autoplay loop muted playsinline style="display: none; width: 100%; height: auto;"></video>
     <iframe id="frame"></iframe>
     <p id="error">Media not found.</p>
@@ -58,7 +65,8 @@
                 'our-team',
                 'ourapproach-1',
                 'news-and-updates',
-                'contact-us'
+                'contact-us',
+                'careers'
             ];
 
             if (latestPages.includes(slug)) {
@@ -129,4 +137,5 @@
         }
     </script>
 </body>
+
 </html>
